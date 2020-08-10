@@ -91,7 +91,7 @@ include 'simple_html_dom.php';
     <div class="header-wrapper">
         <header>
             <h1>The Daily Feed</h1>
-            <p><span id="date"><?php echo $weekDay . ' ' . date('j.n.Y') ?></span> | <?php echo $nameday[0]['name'] ?> |
+            <p><span id="date"><?php echo $weekDay . ' ' . date('j.n.Y') ?></span> | <?php echo $nameday[0]['name'] ?>
                 <?php
                 /*switch (weather('weather_descriptions')[0]) {
                     case 'Clear':
