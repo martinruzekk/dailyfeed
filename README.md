@@ -14,3 +14,5 @@ e.g:
 * Tech news (The Verge)
 
 I plan on adding even more functionality and even publih it to the world.
+
+The app is accesible from [df.martinruzek.eu](https://df.martinruzek.eu)

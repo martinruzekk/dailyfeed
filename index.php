@@ -20,19 +20,16 @@ foreach ($holiday as $val) {
 //TODO new weather api
 //TODO cache počasí
 
-function weather($index)
+/*function weather($index)
 {
-
+    $url = 'api.openweathermap.org/data/2.5/forecast?q=Karlovy%20Vary&appid={API KEY}&mode=json&units=metric';
+    $weather = file_get_contents($url);
+    //$weather = json_decode(file_get_contents('api.openweathermap.org/data/2.5/forecast?q=Karlovy%20Vary&appid={API KEY}&mode=json&units=metric'), true);
 
     $time = date('Y-m-d h:i:s');
 
     //return $api_result['current'][$index];
-}
-
-$url = 'api.openweathermap.org/data/2.5/forecast?q=Karlovy%20Vary&appid={API KEY}&mode=json&units=metric';
-$weather = file_get_contents($url);
-//$weather = json_decode(file_get_contents('api.openweathermap.org/data/2.5/forecast?q=Karlovy%20Vary&appid={API KEY}&mode=json&units=metric'), true);
-print_r($weather);
+}*/
 
 /*clear
     mist
@@ -236,9 +233,6 @@ include 'simple_html_dom.php';
 
                 ?>
                 var USD = document.getElementById('USD').getContext('2d');
-                const gradient = {
-
-                };
                 var chart = new Chart(USD, {
                     // The type of chart we want to create
                     type: 'line',
