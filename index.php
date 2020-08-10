@@ -29,9 +29,9 @@ function weather($index)
     //return $api_result['current'][$index];
 }
 
-$url = 'api.openweathermap.org/data/2.5/forecast?q=Karlovy%20Vary&appid=f8fa03f5613b0c792687f1c95cc397b4&mode=json&units=metric';
+$url = 'api.openweathermap.org/data/2.5/forecast?q=Karlovy%20Vary&appid={API KEY}&mode=json&units=metric';
 $weather = file_get_contents($url);
-//$weather = json_decode(file_get_contents('api.openweathermap.org/data/2.5/forecast?q=Karlovy%20Vary&appid=f8fa03f5613b0c792687f1c95cc397b4&mode=json&units=metric'), true);
+//$weather = json_decode(file_get_contents('api.openweathermap.org/data/2.5/forecast?q=Karlovy%20Vary&appid={API KEY}&mode=json&units=metric'), true);
 print_r($weather);
 
 /*clear
@@ -192,7 +192,7 @@ include 'simple_html_dom.php';
         $cnb = 'https://www.cnb.cz/cs/financni_trhy/devizovy_trh/kurzy_devizoveho_trhu/denni_kurz.xml';
         $cnb = simplexml_load_file($cnb);
 
-        $sql = "SELECT date FROM currancy";
+        $sql = "SELECT date FROM currancy ORDER BY date DESC LIMIT 1";
         $result = mysqli_query($conn, $sql);
         $resultCheck = mysqli_num_rows($result);
         if ($resultCheck > 0) {
@@ -236,6 +236,9 @@ include 'simple_html_dom.php';
 
                 ?>
                 var USD = document.getElementById('USD').getContext('2d');
+                const gradient = {
+
+                };
                 var chart = new Chart(USD, {
                     // The type of chart we want to create
                     type: 'line',
@@ -387,7 +390,7 @@ include 'simple_html_dom.php';
             //!data.gov.cz
             //COVID
             //?Wikipedia článek
-            //!stock prizes -> YLO7NMJRS9JGUL6T
+            //!stock prizes
         -->
 
 
