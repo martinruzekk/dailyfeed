@@ -1,0 +1,11 @@
+.podcast {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    img {
+        width: 25vw;
+        height: 25vw;
+        margin-right: 10px;
+    }
+}

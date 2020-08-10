@@ -1,0 +1,29 @@
+.covid {
+    background-color: #d31145;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-top: 0px;
+
+    .active {
+        background-color: #e8eaea;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+        margin: 10px;
+        border-radius: 0.7rem;
+        width: 50%;
+    }
+
+    .daily {
+        background-color: #e8eaea;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+        margin: 10px;
+        border-radius: 0.7rem;
+        width: 50%;
+    }
+}
