@@ -150,14 +150,19 @@ include 'simple_html_dom.php';
             </div>
         </section>
         <section class="podcast">
-            <img src="./img/12.png" alt="Vinohradská 12" id="vin">
+            <img src="./img/12.png" alt="Vinohradská 12">
             <div>
                 <?php
-                $vinohradska_URL = file_get_html('https://podcasts.apple.com/us/podcast/vinohradsk%C3%A1-12/id1458203948?ign-mpt=uo%3D4');
+                $vinohradska_URL = file_get_html('https://podcasts.google.com/feed/aHR0cHM6Ly9mZWVkLnBvZGJlYW4uY29tL2Rlbmlrbi9mZWVkLnhtbA');
+                $vinohradska = $vinohradska_URL->find('div[class="e3ZUqe"]', 0)->plaintext;
+                $vinohradska_date = $vinohradska_URL->find('div[class="OTz6ee"]', 0)->plaintext;
+                echo '<h3>' . $vinohradska . '</h3>';
+                echo '<p>' . $vinohradska_date . '</p>';
+                /*$vinohradska_URL = file_get_html('https://podcasts.apple.com/cz/podcast/vinohradsk%C3%A1-12/id1458203948?l=cs');
                 $vinohradska = $vinohradska_URL->find('p[dir=false]', 2)->plaintext;
                 $vinohradska_date = $vinohradska_URL->find('time', 0)->plaintext;
                 echo '<h3>' . $vinohradska . '</h3>';
-                echo '<p>' . $vinohradska_date . '</p>';
+                echo '<p>' . $vinohradska_date . '</p>';*/
                 ?>
             </div>
         </section>
@@ -177,7 +182,7 @@ include 'simple_html_dom.php';
             <img src="./img/uks.jpg" alt="U Kulatého stolu">
             <div>
                 <?php
-                $uks_URL = file_get_html('https://podcasts.apple.com/us/podcast/u-kulat%C3%A9ho-stolu/id1461753576');
+                $uks_URL = file_get_html('https://podcasts.apple.com/cz/podcast/u-kulat%C3%A9ho-stolu/id1461753576?l=cs');
                 $uks = $uks_URL->find('p[dir=false]', 2)->plaintext;
                 $uks_date = $uks_URL->find('time', 0)->plaintext;
                 echo '<h3>' . $uks . '</h3>';
