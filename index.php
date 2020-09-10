@@ -1,7 +1,7 @@
 <?php
 require './includes/dbh.inc.php';
 
-$nameday = file_get_contents('https://svatky.adresa.info/json');
+/*$nameday = file_get_contents('https://svatky.adresa.info/json');
 $nameday = json_decode($nameday, true);
 
 $holiday = json_decode(file_get_contents('https://date.nager.at/api/v2/publicholidays/2020/CZ'), true);
@@ -15,7 +15,7 @@ foreach ($holiday as $val) {
         </script>
         ";
     }
-}
+}*/
 
 //TODO new weather api
 //TODO cache počasí
@@ -153,12 +153,16 @@ include 'simple_html_dom.php';
             <img src="./img/12.png" alt="Vinohradská 12">
             <div>
                 <?php
+<<<<<<< HEAD
                 $vinohradska_URL = file_get_html('https://podcasts.google.com/feed/aHR0cHM6Ly9mZWVkLnBvZGJlYW4uY29tL2Rlbmlrbi9mZWVkLnhtbA');
                 $vinohradska = $vinohradska_URL->find('div[class="e3ZUqe"]', 0)->plaintext;
                 $vinohradska_date = $vinohradska_URL->find('div[class="OTz6ee"]', 0)->plaintext;
                 echo '<h3>' . $vinohradska . '</h3>';
                 echo '<p>' . $vinohradska_date . '</p>';
                 /*$vinohradska_URL = file_get_html('https://podcasts.apple.com/cz/podcast/vinohradsk%C3%A1-12/id1458203948?l=cs');
+=======
+                /*$vinohradska_URL = file_get_html('https://podcasts.apple.com/us/podcast/vinohradsk%C3%A1-12/id1458203948?ign-mpt=uo%3D4');
+>>>>>>> 2bd618a45ea7eff3f967e733a011fae976ce97c1
                 $vinohradska = $vinohradska_URL->find('p[dir=false]', 2)->plaintext;
                 $vinohradska_date = $vinohradska_URL->find('time', 0)->plaintext;
                 echo '<h3>' . $vinohradska . '</h3>';
@@ -170,11 +174,11 @@ include 'simple_html_dom.php';
             <img src="./img/studion.jpg" alt="Studio N">
             <div>
                 <?php
-                $studion_URL = file_get_html('https://podcasts.apple.com/cz/podcast/studio-n/id1476533600?l=cs');
+                /*$studion_URL = file_get_html('https://podcasts.apple.com/cz/podcast/studio-n/id1476533600?l=cs');
                 $studion = $studion_URL->find('p[dir=false]', 2)->plaintext;
                 $studion_date = $studion_URL->find('time', 0)->plaintext;
                 echo '<h3>' . $studion . '</h3>';
-                echo '<p>' . $studion_date . '</p>';
+                echo '<p>' . $studion_date . '</p>';*/
                 ?>
             </div>
         </section>
@@ -182,13 +186,26 @@ include 'simple_html_dom.php';
             <img src="./img/uks.jpg" alt="U Kulatého stolu">
             <div>
                 <?php
+<<<<<<< HEAD
                 $uks_URL = file_get_html('https://podcasts.apple.com/cz/podcast/u-kulat%C3%A9ho-stolu/id1461753576?l=cs');
+=======
+                /*$uks_URL = file_get_html('https://podcasts.apple.com/us/podcast/u-kulat%C3%A9ho-stolu/id1461753576');
+>>>>>>> 2bd618a45ea7eff3f967e733a011fae976ce97c1
                 $uks = $uks_URL->find('p[dir=false]', 2)->plaintext;
                 $uks_date = $uks_URL->find('time', 0)->plaintext;
                 echo '<h3>' . $uks . '</h3>';
-                echo '<p>' . $uks_date . '</p>';
+                echo '<p>' . $uks_date . '</p>';*/
                 ?>
             </div>
+        </section>
+        <section id="jidlo">
+        <?php
+        
+            https://spsostrov.cz/sites/default/files/2020-09/JL_07-11_09-2020.pdf
+            $url = "https://spsostrov.cz/sites/default/files/" . date('Y-m/') . "JL_" . date('d-');
+            echo $url;
+        ?>
+                <iframe src="" frameborder="0"></iframe>
         </section>
         <?php
         $cnb = 'https://www.cnb.cz/cs/financni_trhy/devizovy_trh/kurzy_devizoveho_trhu/denni_kurz.xml';
@@ -339,7 +356,7 @@ include 'simple_html_dom.php';
         </section>
 
         <?php
-
+        /*
         $irozhlas_domov = 'https://www.irozhlas.cz/rss/irozhlas/section/zpravy-domov';
         $irozhlas_domov = simplexml_load_file($irozhlas_domov);
 
@@ -370,7 +387,7 @@ include 'simple_html_dom.php';
             echo '</section>';
         }
 
-
+*/
 
         ?>
 
