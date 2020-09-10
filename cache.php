@@ -1,6 +1,6 @@
 <?php
 
-require '../includes/dbh.inc.php';
+require './includes/dbh.inc.php';
 session_start();
 
 // Nameday
@@ -12,7 +12,7 @@ $namedayName = array(
 );
 
 
-$fileContent = file_get_contents('../nameday.json');
+$fileContent = file_get_contents('nameday.json');
 $fileContent = json_decode($fileContent, true);
 //print_r($fileContent);
 //echo '<br>';
@@ -46,11 +46,11 @@ if ($_COOKIE['reload-cache'] == 0) {
 $enc = json_encode($fileContent);
 echo '<br>';
 print_r($enc);
-//$jsonFile = fopen("../nameday.json", "w");
+//$jsonFile = fopen("nameday.json", "w");
 //fwrite($jsonFile, $enc);
 //fclose($jsonFile);
 
-//file_put_contents("../nameday.json", $enc);
+//file_put_contents("nameday.json", $enc);
 
 // Holiday
 
