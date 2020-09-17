@@ -1,5 +1,5 @@
-.irozhlas .irozhlas-img {
-  width: 100%;
+.irozhlas .ir-img {
+  width: 40px;
 }
 
 .irozhlas a {
@@ -78,6 +78,15 @@
   margin: 10px;
   border-radius: 0.7rem;
   width: 50%;
+}
+
+.jidelna {
+  width: 100%;
+}
+
+.jidelna iframe {
+  width: 100%;
+  height: 40vh;
 }
 
 footer {

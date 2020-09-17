@@ -2,4 +2,5 @@ apikeys.txt
 test.php
 test.json
 dbh.inc.php
-repair.html
+repairs.html
+index-old.php
