@@ -19,14 +19,15 @@ $fileContent = json_decode($fileContent, true);
 //echo 'holiday: ' . $fileContent["properties"]['holiday'];
 //echo '<br>';
 $fileContent["properties"]['nameday'] = $nameday[0]['name'];
+$fileContent["properties"]['nameday'] = "martin";
 $fileContent["properties"]['holiday'] = false;
 //echo 'nameday: ' . $fileContent["properties"]['nameday'];
 //echo '<br>';
 print_r($fileContent);
 
-$_SESSION['counter'];
-$_SESSION['counter']++;
-echo $_SESSION['counter'];
+//$_SESSION['counter'];
+//$_SESSION['counter']++;
+//echo $_SESSION['counter'];
 
 
 /*if (!isset($_SESSION['reload-cache'])) {
@@ -50,7 +51,7 @@ print_r($enc);
 //fwrite($jsonFile, $enc);
 //fclose($jsonFile);
 
-//file_put_contents("../nameday.json", $enc);
+file_put_contents("../nameday.json", $enc);
 
 // Holiday
 

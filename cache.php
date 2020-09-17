@@ -7,13 +7,10 @@ session_start();
 
 $nameday = file_get_contents('https://svatky.adresa.info/json');
 $nameday = json_decode($nameday, true);
-$namedayName = array(
-    'name' => $nameday[0]['name']
-);
-
 
 $fileContent = file_get_contents('nameday.json');
 $fileContent = json_decode($fileContent, true);
+print_r($fileContent);
 //print_r($fileContent);
 //echo '<br>';
 //echo 'holiday: ' . $fileContent["properties"]['holiday'];
@@ -50,7 +47,7 @@ print_r($enc);
 //fwrite($jsonFile, $enc);
 //fclose($jsonFile);
 
-//file_put_contents("nameday.json", $enc);
+file_put_contents("nameday.json", $enc);
 
 // Holiday
 
@@ -91,9 +88,21 @@ if ($i = true) {
 
 // Jidelna
 
+//? Scrape?
+
+echo '<br>';
+echo $urlJidlo = "https://spsostrov.cz/sites/default/files/". date('Y-m/') . "JL_" . (date('d')+1) . '-' . (date('d')+6) . "_" . date('m-Y') . '.pdf';
+echo '<br>';
+echo date('d');
+
+$url = "https://spsostrov.cz/sites/default/files/2020-09/JL_14-18_09-2020.pdf";
+if(date('w') == 0) {
+    $urlJidlo = "https://spsostrov.cz/sites/default/files/". date('Y-m/') . "JL_" . (date('d')+1) . '-' . (date('d')+6) . "_" . date('m-Y') . '.pdf';
+}
+
 // Currancy
     // USD
-    //EUR
+    // EUR
 
 // News
     // iRozhlas
