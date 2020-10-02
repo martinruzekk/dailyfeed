@@ -4,16 +4,19 @@
     flex-direction: row;
     justify-content: space-evenly;
     margin-top: 0px;
+    flex-wrap: wrap;
+    border-radius: 0.7rem;
 
     .active {
         background-color: #e8eaea;
         display: flex;
         flex-direction: column;
         align-items: center;
+        text-align: center;
         padding: 10px;
         margin: 10px;
         border-radius: 0.7rem;
-        width: 50%;
+        width: 40%;
     }
 
     .daily {
@@ -24,6 +27,26 @@
         padding: 10px;
         margin: 10px;
         border-radius: 0.7rem;
-        width: 50%;
+        width: 90%;
+        height: auto;
+    }
+
+    .covid-card {
+        background-color: #e8eaea;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 10px;
+        margin: 10px;
+        border-radius: 0.7rem;
+        width: 90%;
+    }
+
+    .covid-color {
+        height: 20px;
+        width: 7ch;
+        border-radius: 0.3rem;
     }
 }

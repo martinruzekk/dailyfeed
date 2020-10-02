@@ -1,8 +1,12 @@
 <?php
 
-if (isset($_GET['key']) && $_GET['key'] == 'qQ7xy6+bsE9q3Kz6+cadEeKh7TC+#x3sfX+Yb*sHKc6mFckEP7B%s7q35mAk4uSJqFHNPs_F%@Y66xCyA%p5?aT6AjMR=QGR+vvXmsuXjXuzUqExh&MbuKKD9Aj4uPkB') {
+if ($_GET['key'] == 'kwhY76G4pr5XYjjY4BNg2CsNszLQdJN6LNBHurNqPSPW2KQHgAmnUfwj3ce7AVrUa4C6kAmPVXb64fzq4ekNpyKJSwD26hwxk4P6Y2GBRzcsWJ9Gbcthg4GYqkErjDAU') {
     require './includes/dbh.inc.php';
-    require 'simple_html_dom.php';
+    include 'simple_html_dom.php';
+
+    // Upate
+
+    $update = date('d.m.Y H:i');
 
     // Nameday
 
@@ -32,12 +36,28 @@ if (isset($_GET['key']) && $_GET['key'] == 'qQ7xy6+bsE9q3Kz6+cadEeKh7TC+#x3sfX+Y
     $covidActive = end($covidActive['data']);
     $covidActive = $covidActive['kumulativni_pocet_nakazenych'] - $covidActive['kumulativni_pocet_vylecenych'] - $covidActive['kumulativni_pocet_umrti'];
 
-    $covidDaily = json_decode(file_get_html('https://onemocneni-aktualne.mzcr.cz/api/v2/covid-19/nakaza.json'), true);
+    $covidDaily = json_decode(file_get_contents('https://onemocneni-aktualne.mzcr.cz/api/v2/covid-19/nakaza.json'), true);
+    $numberOfPositiveData = $covidDaily['data'];
     $covidDaily = end($covidDaily['data']);
+
+    $covidTests = json_decode(file_get_contents('https://onemocneni-aktualne.mzcr.cz/api/v2/covid-19/testy.json'), true);
+    $numberOfTests = 0;
+    $numberOfPositive = 0;
+
+    for ($i = 0; $i <= 10; $i++) {
+        $numberOfTests += array_reverse($covidTests['data'])[$i]['prirustkovy_pocet_testu'];
+        $numberOfPositive += array_reverse($numberOfPositiveData)[$i]['prirustkovy_pocet_nakazenych'];
+    }
+
+    $positiveTests = 100 * ($numberOfPositive / $numberOfTests);
+
+    $kvkColorURL = file_get_html('https://onemocneni-aktualne.mzcr.cz/covid-19/stupne-pohotovosti');
+    $kvkColor = $kvkColorURL->find('svg', 0);
 
     $covid = array(
         "active" => $covidActive,
-        "daily" => $covidDaily['prirustkovy_pocet_nakazenych']
+        "daily" => $covidDaily['prirustkovy_pocet_nakazenych'],
+        "positiveTests" => round($positiveTests, 1)
     );
 
 
@@ -170,7 +190,8 @@ if (isset($_GET['key']) && $_GET['key'] == 'qQ7xy6+bsE9q3Kz6+cadEeKh7TC+#x3sfX+Y
         "covid" => $covid,
         "jidelna" => $jidelna,
         "podcasty" => $podcasty,
-        "news" => $news
+        "news" => $news,
+        "update" => $update
     );
 
     file_put_contents('cache.json', json_encode($final));

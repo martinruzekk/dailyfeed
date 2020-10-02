@@ -57,13 +57,54 @@ switch (date("D")) {
             <p><span id="date"><?php echo $weekDay . ' ' . date('j.n.Y') ?></span> | <?php echo $json['nameday'] ?></p>
         </header>
     </div>
-
-    <?php
-
-    ?>
-
     <main>
+        <section>
+            <p id="update">Poslední aktualizace: <?php echo $json['update'] ?></p>
+        </section>
         <section class="covid">
+            <div class="covid-card">
+                <h3>
+                    <?php
+                    //echo $json['covid']['active'];
+                    echo number_format($json['covid']['active'], 0, ',', ' ')
+                    ?>
+                </h3>
+                <p>Aktivních případů</p>
+            </div>
+            <div class="covid-card">
+                <h3>
+                    <?php
+                    echo number_format($json['covid']['daily'], 0, ',', ' ')
+                    ?>
+                </h3>
+                <p>Denní nárůst</p>
+            </div>
+            <div class="covid-card">
+                <h3>
+                    <?php
+                    echo number_format($json['covid']['positiveTests'], 1, ',', ' ')
+                    ?>
+                </h3>
+                <p>% pozitivních testů</p>
+            </div>
+            <!--<div class="covid-card">
+                <h3>
+                    <?php
+                    //echo number_format($json['covid']['active'], 0, ',', ' ')
+                    ?>
+                </h3>
+                <p>Počet nakažený v Karlovarském kraji</p>
+            </div>
+            <div class="covid-card">
+                <h3>
+                    <?php
+                    //echo number_format($json['covid']['active'], 0, ',', ' ')
+                    ?>
+                </h3>
+                <p>Počet nakažený v Okrese Karlovy Vary</p>
+            </div>-->
+        </section>
+        <!--<section class="covid">
             <div class="active">
                 <h3>
                     <?php
@@ -80,7 +121,39 @@ switch (date("D")) {
                 </h3>
                 <p>Denní nárůst</p>
             </div>
-        </section>
+            <div class="daily">
+                <h3>
+                    <?php
+                    echo $json['covid']['daily'];
+                    ?>
+                </h3>
+                <p>Denní nárůst</p>
+            </div>
+            <div class="daily">
+                <h3>
+                    <?php
+                    echo $json['covid']['daily'];
+                    ?>
+                </h3>
+                <p>Denní nárůst</p>
+            </div>
+            <div class="daily">
+                <h3>
+                    <?php
+                    echo $json['covid']['daily'];
+                    ?>
+                </h3>
+                <p>Denní nárůst</p>
+            </div>
+            <div class="daily">
+                <h3>
+                    <?php
+                    echo $json['covid']['daily'];
+                    ?>
+                </h3>
+                <p>Denní nárůst</p>
+            </div>
+        </section>-->
         <section class="podcast">
             <img src="./img/12.png" alt="Vinohradská 12">
             <div>
@@ -115,112 +188,10 @@ switch (date("D")) {
             ?>
         </section>
         <section class="currancy">
-            <canvas id="USD"></canvas>
-            <canvas id="EUR"></canvas>
+            <!--<canvas id="USD"></canvas>
+            <canvas id="EUR"></canvas>-->
 
-            <script>
-                <?php
 
-                ?>
-                var USD = document.getElementById('USD').getContext('2d');
-                var chart = new Chart(USD, {
-                    // The type of chart we want to create
-                    type: 'line',
-
-                    // The data for our dataset
-                    data: {
-                        //labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-                        labels: [<?php
-                                    $sql = "SELECT * FROM currancy WHERE currancy='USD' ORDER BY date ASC LIMIT 10";
-                                    $result = mysqli_query($conn, $sql);
-                                    $resultCheck = mysqli_num_rows($result);
-                                    if ($resultCheck > 0) {
-                                        while ($row = mysqli_fetch_assoc($result)) {
-                                            echo "'" . $row['date'] . "', ";
-                                        }
-                                    }
-                                    ?>],
-                        datasets: [{
-                            label: 'USD',
-                            backgroundColor: 'rgb(144,238,144)',
-                            borderColor: 'rgb(0,135,61)',
-                            //data: [0, 10, 5, 2, 20, 30, 45]
-                            data: [
-                                <?php
-                                $USD_rate = 0;
-                                $sql = "SELECT * FROM currancy WHERE currancy='USD' ORDER BY date ASC LIMIT 10";
-                                $result = mysqli_query($conn, $sql);
-                                $resultCheck = mysqli_num_rows($result);
-                                if ($resultCheck > 0) {
-                                    while ($row = mysqli_fetch_assoc($result)) {
-                                        echo $row['rate'] . ',' . "\n";
-                                        $USD_rate = $row['rate'];
-                                    }
-                                }
-                                ?>
-                            ]
-                        }]
-                    },
-
-                    // Configuration options go here
-                    options: {
-                        title: {
-                            display: true,
-                            text: 'Current USD rate: <?php echo $USD_rate ?>',
-                            position: 'bottom',
-                            fontSize: 15
-                        }
-                    }
-                });
-                var EUR = document.getElementById('EUR').getContext('2d');
-                var chart = new Chart(EUR, {
-                    // The type of chart we want to create
-                    type: 'line',
-
-                    // The data for our dataset
-                    data: {
-                        labels: [<?php
-                                    $sql = "SELECT * FROM currancy WHERE currancy='EUR' ORDER BY date ASC LIMIT 10";
-                                    $result = mysqli_query($conn, $sql);
-                                    $resultCheck = mysqli_num_rows($result);
-                                    if ($resultCheck > 0) {
-                                        while ($row = mysqli_fetch_assoc($result)) {
-                                            echo "'" . $row['date'] . "', ";
-                                        }
-                                    }
-                                    ?>],
-                        datasets: [{
-                            label: 'EUR',
-                            backgroundColor: 'rgb(144,238,144)',
-                            borderColor: 'rgb(0,135,61)',
-                            data: [
-                                <?php
-                                $EUR_rate = 0;
-                                $sql = "SELECT * FROM currancy WHERE currancy='EUR' ORDER BY date ASC LIMIT 10";
-                                $result = mysqli_query($conn, $sql);
-                                $resultCheck = mysqli_num_rows($result);
-                                if ($resultCheck > 0) {
-                                    while ($row = mysqli_fetch_assoc($result)) {
-                                        echo $row['rate'] . ',' . "\n";
-                                        $EUR_rate = $row['rate'];
-                                    }
-                                }
-                                ?>
-                            ]
-                        }]
-                    },
-
-                    // Configuration options go here
-                    options: {
-                        title: {
-                            display: true,
-                            text: 'Current EUR rate: <?php echo $EUR_rate ?>',
-                            position: 'bottom',
-                            fontSize: 15
-                        }
-                    }
-                });
-            </script>
         </section>
         <?php
         foreach ($json['news']['irozhlas'] as $val) {
